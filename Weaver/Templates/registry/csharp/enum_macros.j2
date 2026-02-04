@@ -1,0 +1,14 @@
+{%- import 'naming_macros.j2' as namings -%}
+{% macro define_enum(attribute) %}
+public enum {{ namings.to_pascal_case(attribute.name) }}
+{
+            {%- for member in attribute.type.members %}
+                {%- if member.brief %}
+    /// <summary>
+    /// {{member.brief}}
+    /// </summary>        
+                {%- endif %} 
+    {{ member.value }},
+            {%- endfor %}
+}
+{% endmacro %}

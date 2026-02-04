@@ -1,0 +1,4 @@
+{%- macro to_pascal_case(value) -%}
+{%- set parts = value | replace('.', '_') | split('_') -%}
+{%- for p in parts -%}{{ p | capitalize }}{%- endfor -%}
+{%- endmacro -%}

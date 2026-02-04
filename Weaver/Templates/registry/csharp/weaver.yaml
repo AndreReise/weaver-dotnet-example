@@ -1,0 +1,19 @@
+params:
+  service_namespace: "Application"
+
+whitespace_control:
+  lstrip_blocks: true
+
+templates:
+  - pattern: metric.csharp.j2
+    filter: >
+      .groups
+      | map(select(.type == "metric"))
+    application_mode: single
+    file_name: "Metrics.cs"
+
+  - pattern: semantic.csharp.j2
+    filter: semconv_grouped_attributes 
+    application_mode: each
+    file_name: "{{ctx.root_namespace | pascal_case}}Attributes.cs"
+

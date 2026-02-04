@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/open-telemetry/weaver/main/schemas/semconv.schema.json
+
+groups:
+  - id: warehouse.conveyor.processed
+    type: metric
+    metric_name: warehouse.conveyor.processed.total
+    stability: stable
+    brief: "Total number of items processed by the conveyor"
+    instrument: counter
+    unit: "{item}"
+    attributes:
+      - ref: warehouse.conveyor.id
+        requirement_level: required
+      - ref: warehouse.item.type
+        requirement_level: required
+      - ref: warehouse.conveyor.error
+        requirement_level: recommended
+      - ref: warehouse.conveyor.operator_id
+        requirement_level: opt_in

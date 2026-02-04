@@ -1,0 +1,4 @@
+name: Warehouse Schema
+description: Semantic conventions for Warehouse Management System
+semconv_version: 0.0.1
+schema_base_url: github.com/AndreReise/weaver-dotnet-example

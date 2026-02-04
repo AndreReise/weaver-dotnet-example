@@ -1,0 +1,39 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/open-telemetry/weaver/main/schemas/semconv.schema.json
+
+groups:
+  - id: registry.warehouse
+    type: attribute_group
+    brief: "Attributes for warehouse domain"
+    attributes:
+    - id: warehouse.item.type
+      brief: "The type of item to be stored"
+      stability: stable
+      type:
+        members:
+          - id: box
+            stability: stable
+            value: Box
+          - id: pallet
+            stability: stable
+            value: Pallet
+          - id: envelope
+            stability: stable
+            value: Envelope
+          - id: Unknown
+            stability: stable
+            value: Unknown
+    - id: warehouse.conveyor.error
+      brief: "The conveyor operation error"
+      stability: stable
+      type: string
+      examples: ["Obstacle", "Pneumatics failure"]
+    - id: warehouse.conveyor.id
+      brief: "The conveyor unique identifier."
+      stability: stable
+      type: string
+      examples: ["CentralConveyor1"]
+    - id: warehouse.conveyor.operator_id
+      brief: "The operator supervising the conveyor unique identifier."
+      stability: stable
+      type: string
+      examples: ["Operators_John_Doe"]
