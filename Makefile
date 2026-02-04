@@ -38,9 +38,9 @@ validate:
 
 regression:
 	docker run --rm \
-		--mount 'type=bind,source=$(PWD)/Model,target=/home/weaver/source,readonly' \
-		--mount 'type=bind,source=$(PWD)/Templates,target=/home/weaver/templates,readonly' \
-		--mount 'type=bind,source=$(PWD)/Policies,target=/home/weaver/policies' \
+		--mount 'type=bind,source=$(PWD)/Contracts/Telemetry,target=/home/weaver/source,readonly' \
+		--mount 'type=bind,source=$(PWD)/Weaver/Templates,target=/home/weaver/templates,readonly' \
+		--mount 'type=bind,source=$(PWD)/Weaver/Policies,target=/home/weaver/policies' \
 		${WEAVER_CONTAINER} registry check \
         --baseline-registry=https://github.com/${GITHUB_REPO}/archive/refs/tags/v$(LATEST_RELEASED_VERSION).zip[Contracts/Telemetry] \
 		--registry=/home/weaver/source \
@@ -50,10 +50,9 @@ regression:
 diff:
 	docker run --rm \
 		$(DOCKER_USER_IS_HOST_USER_ARG) \
-		--mount 'type=bind,source=$(PWD)/Model,target=/home/weaver/source,readonly' \
-		--mount 'type=bind,source=$(PWD)/Templates,target=/home/weaver/templates,readonly' \
-		--mount 'type=bind,source=$(PWD)/Policies,target=/home/weaver/policies' \
-        --mount 'type=bind,source=$(PWD)/Baseline,target=/home/weaver/baseline' \
+		--mount 'type=bind,source=$(PWD)/Contracts/Telemetry,target=/home/weaver/source,readonly' \
+		--mount 'type=bind,source=$(PWD)/Weaver/Templates,target=/home/weaver/templates,readonly' \
+		--mount 'type=bind,source=$(PWD)/Weaver/Policies,target=/home/weaver/policies' \
 		${WEAVER_CONTAINER} registry diff \
         --baseline-registry=https://github.com/${GITHUB_REPO}/archive/refs/tags/v$(LATEST_RELEASED_VERSION).zip[Contracts/Telemetry] \
         --diff-format ansi \
