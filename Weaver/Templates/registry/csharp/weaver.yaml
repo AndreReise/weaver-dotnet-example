@@ -5,7 +5,7 @@ whitespace_control:
   lstrip_blocks: true
 
 templates:
-  - pattern: metric.csharp.j2
+  - pattern: metrics.csharp.j2
     filter: >
       .groups
       | map(select(.type == "metric"))

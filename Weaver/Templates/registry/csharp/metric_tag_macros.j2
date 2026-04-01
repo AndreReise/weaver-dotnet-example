@@ -1,0 +1,16 @@
+{%- from 'pascal_case_macros.j2' import to_pascal_case -%}
+{%- macro tag(metric) -%}
+{%- set tag_attribute = "global::Microsoft.Extensions.Diagnostics.Metrics.TagName" -%}
+public struct {{to_pascal_case(metric.id)}}Tags
+{
+	{%- for item in metric.attributes %}
+		{%- if item.type.members is defined %}
+			{%- set type = to_pascal_case(item.name) %}
+		{%- else %}
+			{%- set type = item.type %}
+		{%- endif %}
+	[{{ tag_attribute }}("{{ item.name }}")]
+	public{% if item.requirement_level == "required" %} required{% endif %} {{ type }} {{ to_pascal_case(item.name) }} { get; set; }
+	{%- endfor %}
+}
+{%- endmacro -%}

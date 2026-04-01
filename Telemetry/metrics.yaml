@@ -17,3 +17,15 @@ groups:
         requirement_level: recommended
       - ref: warehouse.conveyor.operator_id
         requirement_level: opt_in
+  - id: warehouse.conveyor.active
+    type: metric
+    metric_name: warehouse.conveyor.active
+    stability: stable
+    brief: "Number of conveyors currently active"
+    instrument: gauge
+    unit: "{conveyor}"
+    attributes:
+      - ref: warehouse.conveyor.id
+        requirement_level: recommended
+      - ref: warehouse.conveyor.operator_id
+        requirement_level: opt_in

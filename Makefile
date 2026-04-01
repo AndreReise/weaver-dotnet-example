@@ -14,7 +14,7 @@ generate-csharp:
 		--future \
 		/home/weaver/target
 
-generate-specification:
+generate-md:
 	mkdir -p $(PWD)/Documentation
 	docker run  --rm \
 		--mount 'type=bind,source=$(PWD)/Telemetry,target=/home/weaver/source,readonly' \
