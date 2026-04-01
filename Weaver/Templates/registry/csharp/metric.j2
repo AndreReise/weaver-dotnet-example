@@ -1,0 +1,28 @@
+{%- from 'pascal_case.j2' import to_pascal_case -%}
+{%- from 'metric_tag.j2' import tag -%}
+{%- macro definition(metric) -%}
+{%- if metric.attributes | default([]) | length > 0 -%}
+{{ tag(metric) }}
+
+{# Extra blank line after struct #}
+{%- endif %}
+
+{%- set instrument_map = {
+"counter": "global::Microsoft.Extensions.Diagnostics.Metrics.Counter",
+"gauge": "global::Microsoft.Extensions.Diagnostics.Metrics.Gauge",
+"histogram": "global::Microsoft.Extensions.Diagnostics.Metrics.Histogram",
+"updowncounter": "global::Microsoft.Extensions.Diagnostics.Metrics.Gauge"
+} %}
+
+{%- set metric_name = metric.metric_name %}
+{%- set metric_type = instrument_map.get(metric.instrument) %}
+
+{%- if metric.attributes | default([]) | length > 0 -%}
+[{{ metric_type }}<double>(typeof({{ to_pascal_case(metric.id) }}Tags), Name = "{{ metric_name }}")]
+{%- else %}
+[{{ metric_type }}<double>(Name = "{{ metric_name }}")]
+{%- endif %}
+public static partial {{ to_pascal_case(metric.id) + "Metric" }} {{ "Create" + to_pascal_case(metric.id) }}(Meter meter);
+
+{# Blank line after method for separation #}
+{%- endmacro -%}

@@ -1,6 +1,6 @@
-{%- import 'naming_macros.j2' as namings -%}
+{%- from 'pascal_case.j2' import to_pascal_case -%}
 {% macro define_enum(attribute) %}
-public enum {{ namings.to_pascal_case(attribute.name) }}
+public enum {{ to_pascal_case(attribute.name) }}
 {
             {%- for member in attribute.type.members %}
                 {%- if member.brief %}

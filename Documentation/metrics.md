@@ -29,3 +29,19 @@
 | `Unknown` | Unknown | ![Stable](https://img.shields.io/badge/-stable-lightgreen) |
 
 
+
+## Metric `warehouse.conveyor.active`
+
+| Name     | Instrument Type | Unit (UCUM) | Description    | Stability |
+| -------- | --------------- | ----------- | -------------- | --------- |
+| `warehouse.conveyor.active` | Gauge | `{conveyor}` | Number of conveyors currently active | ![Stable](https://img.shields.io/badge/-stable-lightgreen) |
+
+
+### `warehouse.conveyor.active` Attributes
+
+| Attribute  | Type | Description  | Examples  | [Requirement Level](https://opentelemetry.io/docs/specs/semconv/general/attribute-requirement-level/) | Stability |
+|---|---|---|---|---|---|
+| `warehouse.conveyor.id` | string | The conveyor unique identifier. | `CentralConveyor1` | `Recommended` | ![Stable](https://img.shields.io/badge/-stable-lightgreen) |
+| `warehouse.conveyor.operator_id` | string | The operator supervising the conveyor unique identifier. | `Operators_John_Doe` | `Opt-In` | ![Stable](https://img.shields.io/badge/-stable-lightgreen) |
+
+

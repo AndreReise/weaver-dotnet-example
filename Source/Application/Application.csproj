@@ -12,8 +12,14 @@
 	</ItemGroup>
 
 	<ItemGroup Label="Dependencies">
-		<PackageReference Include="Microsoft.Extensions.Telemetry.Abstractions" Version="10.0.0" />
-		<PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.15.0" />
+		<PackageReference Include="Microsoft.Extensions.Telemetry.Abstractions" Version="10.4.0" />
+		<PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.15.1" />
 	</ItemGroup>
+
+	<PropertyGroup>
+    <NoWarn Label="Gauge is experemental API">
+      $(NoWarn);EXTEXP0003
+    </NoWarn>
+  </PropertyGroup>
 
 </Project>
