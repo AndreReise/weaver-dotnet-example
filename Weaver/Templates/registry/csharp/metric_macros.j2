@@ -1,5 +1,5 @@
-{%- from 'pascal_case.j2' import to_pascal_case -%}
-{%- from 'metric_tag.j2' import tag -%}
+{%- from 'pascal_case_macros.j2' import to_pascal_case -%}
+{%- from 'metric_tag_macros.j2' import tag -%}
 {%- macro definition(metric) -%}
 {%- if metric.attributes | default([]) | length > 0 -%}
 {{ tag(metric) }}

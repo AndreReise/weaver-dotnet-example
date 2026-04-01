@@ -1,4 +1,4 @@
-{%- from 'pascal_case.j2' import to_pascal_case -%}
+{%- from 'pascal_case_macros.j2' import to_pascal_case -%}
 {%- macro tag(metric) -%}
 {%- set tag_attribute = "global::Microsoft.Extensions.Diagnostics.Metrics.TagName" -%}
 public struct {{to_pascal_case(metric.id)}}Tags

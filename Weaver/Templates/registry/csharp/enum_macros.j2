@@ -1,4 +1,4 @@
-{%- from 'pascal_case.j2' import to_pascal_case -%}
+{%- from 'pascal_case_macros.j2' import to_pascal_case -%}
 {% macro define_enum(attribute) %}
 public enum {{ to_pascal_case(attribute.name) }}
 {
