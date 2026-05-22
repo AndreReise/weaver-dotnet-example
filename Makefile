@@ -3,7 +3,7 @@ GITHUB_REPO := AndreReise/weaver-dotnet-example
 LATEST_RELEASED_VERSION := $(shell git ls-remote --tags https://github.com/${GITHUB_REPO}.git | cut -f 2 | sort --reverse | head -n 1 | tr '/' ' ' | cut -d ' ' -f 3 | sed 's/v//g')
 
 generate-csharp:
-	mkdir -p $(PWD)/Source/Application/Telemetry
+	mkdir -p $(PWD)/Source/Application/Telemetry1
 	docker run --rm \
 		--mount 'type=bind,source=$(PWD)/Telemetry,target=/home/weaver/source,readonly' \
 		--mount 'type=bind,source=$(PWD)/Weaver/Templates,target=/home/weaver/templates,readonly' \
